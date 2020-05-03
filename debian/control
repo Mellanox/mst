@@ -1,16 +1,31 @@
 Source: mstflint
 Section: net
-Priority: extra
-Maintainer: Gal Sivan <gsivan@unknown>
-Build-Depends: debhelper (>= 8.0.0), autotools-dev
-Standards-Version: 3.9.2
-Homepage: http://www.mellanox.com
-#Vcs-Git: git://git.debian.org/collab-maint/mstflint.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/mstflint.git;a=summary
+Priority: optional
+Maintainer: Dan Goldberg <dang@mellanox.com>
+Build-Depends: debhelper (>= 9),
+               dh-autoreconf,
+               libibmad-dev,
+               libjson-c-dev,
+               libmuparser-dev,
+               libsqlite3-dev,
+               libssl-dev,
+               pkg-config,
+               zlib1g-dev
+Standards-Version: 4.3.0
+Vcs-Git: https://github.com/Mellanox/mstflint.git
+Vcs-Browser: https://github.com/Mellanox/mstflint
+Homepage: https://github.com/Mellanox/mstflint
 
 Package: mstflint
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Mellanox firmware burning application
- This package contains firmware update tool, vpd dump and register dump tools
- for network adapters based on Mellanox Technologies chips.
+Architecture: linux-any
+Depends: libibmad5,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Mellanox firmware burning application and diagnostics tools
+ This package contains a burning tool and diagnostic tools for Mellanox
+ manufactured host channel adapters (HCA) and network interface cards (NIC).
+ .
+ This burning tool should be used only with Mellanox-manufactured
+ HCA/NIC cards. Using it with cards manufactured by other vendors may
+ be harmful to the cards (due to different configurations). Using the
+ diagnostic tools is normally safe for all HCAs/NICs.

@@ -1,0 +1,3 @@
+version=3
+opts="uversionmangle=s/-/+/" \
+https://github.com/Mellanox/mstflint/releases (?:.*?/)?mstflint-(.*)\.(?:tar.gz|tar.bz2|tar.xz)

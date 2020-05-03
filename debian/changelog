@@ -1,151 +1,161 @@
-mstflint (4.11.0-1) unstable; urgency=low
+mstflint (4.11.0+1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Refresh all patches and refresh upstream pull request
+  * Fix more spelling mistakes (found by Lintian)
+  * Cherry pick upstream patch for compatibility with openssl 1.1.X and 1.0.2
+  * Add libssl-dev and libjson-c-dev to build dependencies
+  * Bump Standards-Version to 4.3.0 (no changes required)
+  * Update debian/copyright
+
+ -- Benjamin Drung <benjamin.drung@cloud.ionos.com>  Thu, 31 Jan 2019 21:45:25 +0100
+
+mstflint (4.8.0-2) unstable; urgency=medium
+
+  * Make the build reproducible (Closes: #886386). Thanks to Chris Lamb
+    for the patch.
+    - add 0012-Reproducible-build.patch
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Fri, 05 Jan 2018 11:47:47 +0100
+
+mstflint (4.8.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Set Debian HPC as maintainer
+  * Move packaging Git repo on Salsa and update Vcs-* headers accordingly
+  * Remove Ana Beatriz Guerrero Lopez from Uploaders and add myself
+    Thanks Ana for all your work!
+  * Run wrap-and-sort
+  * Bump Standards-Version to 4.1.3
+    - Set Priority to optional, instead of (deprecated) extra
+  * Set homepage field to https://github.com/Mellanox/mstflint
+  * Refresh patches (using gbp pq)
+    - mtcr.h is needed to build mstflint, update dont-install-libmtcr_ul.patch
+    - -I mft_utils is needed to build mstflint, update use-system-libs.patch
+  * Add a patch to fix configure.ac by declaring 'm4' as an AC_CONFIG_MACRO_DIR
 
-  * Updated from MFT-4.11.0. Added new tools: mlxarchive and mstprivhost.
+ -- Mehdi Dogguy <mehdi@debian.org>  Thu, 04 Jan 2018 18:32:50 +0100
 
- -- Dan Goldberg <dang@unknown>  Wed, 21 Nov 2018 16:00:00 +0200
+mstflint (4.6.0-1) unstable; urgency=medium
 
-mstflint (4.10.0-1) unstable; urgency=low
+  * New upstream release
+  * Update debian/watch to point to new GitHub home
+  * Drop patches that were accepted upstream and refresh remaining patches
+  * Remove hca_self_test.ofed (upstream dropped it)
+  * Update debian/copyright
+  * Add myself to uploaders
 
-  * Updated from MFT-4.10.0
+ -- Benjamin Drung <benjamin.drung@profitbricks.com>  Tue, 24 Jan 2017 14:11:26 +0100
 
- -- Dan Goldberg <dang@unknown>  Sun, 01 Jul 2018 21:02:03 +0200
+mstflint (4.5.0+1.17.g8a0c39d-1) unstable; urgency=medium
 
-mstflint (4.10.0-1) unstable; urgency=low
+  * Team upload
+  * New upstream release
+  * Refresh all patches
+  * Fix spelling recieved -> received
+  * Use system libraries of muparser and sqlite3
+  * Do not install libmtcr_ul.a (it is used only for the mstflint binaries)
 
-  * Updated from MFT-4.10.0
+ -- Benjamin Drung <benjamin.drung@profitbricks.com>  Tue, 03 Jan 2017 12:52:42 +0100
 
- -- Adham Masarwah <adham@unknown>  Mon, 02 Apr 2018 15:35:46 +0200
+mstflint (4.4.0+1.12.gd1edd58-2) unstable; urgency=medium
 
-mstflint (4.9.0-1) unstable; urgency=low
+  * Team upload
+  * Fix compilation on unknown/unsupported architectures (armel, armhf, mips,
+    mips64el, mipsel, s390x, alpha, and hppa)
+  * Disable -Werror compiler flag
 
-  * Updated from MFT-4.9.0
+ -- Benjamin Drung <bdrung@debian.org>  Sat, 20 Aug 2016 13:09:38 +0200
 
- -- Adham Masarwah <adham@unknown>  Mon, 25 Dec 2017 11:21:46 +0200
+mstflint (4.4.0+1.12.gd1edd58-1) unstable; urgency=medium
 
+  * Team upload
+  * New upstream release.
+    - Fixes build failure with GCC 6.0 (Closes: #811695)
+  * Mangle upstream version to replace minus by plus
+  * Drop typo fix patches (accepted upstream)
+  * Enable hardening
+  * Build binary package on linux-any
+  * Point Vcs-* fields to HTTPS URLs
+  * Bump Standards-Version to 3.9.8 (no changes needed)
+  * Add patches to fix typos and malformed man pages
+    - Fix spelling allign -> align
+    - Fix spelling missmatch -> mismatch
+    - Fix other typos
+    - Fix section mismatch in man pages
+    - Fix man page errors
+  * Run autoreconf on build
+  * Add dependency on libibmad5 (for dynamically loading libibmad.so.5)
 
-mstflint (4.8.0-1) unstable; urgency=low
+ -- Benjamin Drung <benjamin.drung@profitbricks.com>  Tue, 16 Aug 2016 18:03:58 +0200
 
-  * Updated from MFT-4.8.0
+mstflint (4.1.0+1.46.gb1cdaf7-1) unstable; urgency=medium
 
- -- Adham Masarwah <adham@unknown>  Wed, 18 Oct 2017 17:52:33 +0200
+  * Team upload.
+  * New upstream release 4.1.0-1.46.gb1cdaf7:
+    - Previous patches were integrated upstream.
+  * Add patch to remove date and time from version string to ensure a
+    reproducible build.
+  * Add patch to fix spelling errors in mstflint.1 and shipped binaries.
+  * Add a debian/gbp.conf file to automatically filter out upstream's debian/
+    directory when running "gbp import-orig".
 
+ -- Mehdi Dogguy <mehdi@debian.org>  Thu, 31 Dec 2015 01:46:42 +0100
 
-mstflint (4.7.0-1) unstable; urgency=low
+mstflint (4.0.1+1.43.g97d7275-2) unstable; urgency=medium
 
-  * Updated from MFT-4.7.0
+  * Add fields Vcs-Browser/Vcs-Git.
+  * Add patches to fix FTBFS: (Closes: #797248)
+    - fix_Werror=maybe-uninitialized
+    - fix_Werror=sizeof-array-argument
 
- -- Adrian Chiris <adrianc@unknown>  Mon, 08 May 2017 11:00:33 +0200
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Tue, 01 Sep 2015 16:25:26 +0200
 
+mstflint (4.0.1+1.43.g97d7275-1) unstable; urgency=medium
 
-mstflint (4.6.0-1) unstable; urgency=low
+  * New upstream release 4.0.1-1.43.g97d7275:
+    - Build with GCC 5. (Closes: #778016)
+  * Update to Standards-Version 3.9.6, no changes required.
 
-  * Updated from MFT-4.6.0
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Thu, 23 Jul 2015 15:42:01 +0200
 
- -- Adham Masarwah <adham@unknown>  Wed, 11 Jan 2017 20:01:33 +0200
+mstflint (3.7.0+1.18.gcdb9f80-3) unstable; urgency=medium
 
+  * Add support for ppc64el. Thanks to Breno Leitao. (Closes:#760864)
+    This time for real!
 
-mstflint (4.5.0-1) unstable; urgency=low
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Thu, 11 Sep 2014 22:07:17 +0200
 
-  * Updated from MFT-4.5.0
-  * Notice: as of mstflint-4.6.0 the scrip, hca_ofed_self_test.ofed will no longer be a part of mstflint,
-                 Instead it will be a part of Mellanox OFED package.
+mstflint (3.7.0+1.18.gcdb9f80-2) unstable; urgency=medium
 
- -- Adrian Chiris <adrianc@unknown>  Mon, 05 Sep 2016 15:31:33 +0200
+  * Add support for ppc64el. Thanks to Breno Leitao. (Closes:#760864)
 
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Thu, 11 Sep 2014 21:45:18 +0200
 
-mstflint (4.4.0-1) unstable; urgency=low
+mstflint (3.7.0+1.18.gcdb9f80-1) unstable; urgency=medium
 
-  * Updated from MFT-4.4.0
+  * New upstream release: 3.7.0-1.18.gcdb9f80
 
- -- Adrian Chiris <adrianc@unknown>  Tue, 24 May 2016 15:31:33 +0200
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Thu, 04 Sep 2014 11:06:11 +0200
 
+mstflint (3.7.0-1) unstable; urgency=medium
 
-mstflint (4.3.0-1) unstable; urgency=low
+  * New upstream release: 3.7.0-1.10.gdf7ec73
+  * Add build depends on libibmad-dev and autotools-dev.
+  * Remove build depends on automake and libtool.
+  * Switch to dh 9 and source format version 3.0
+  * Remove placeholder manpages.
+  * Remove flag DM-Upload-Allowed.
+  * Remove all current Uploaders, they're welcome back anytime.
+    Add myself to Uploaders.
+  * Bump Standards-Version to 3.9.5 (no changes required).
+  * Update homepage.
+  * Add a watch file.
 
-  * Updated from MFT-4.4.0 initial release
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Fri, 04 Jul 2014 15:39:23 +0200
 
- -- Adrian Chiris <adrianc@unknown>  Wed, 23 Mar 2016 15:31:33 +0200
+mstflint (1.4-OFED-1.4.2-1) unstable; urgency=low
 
+  * Initial release (Closes: #539827)
 
-mstflint (4.3.0-1) unstable; urgency=low
-
-  * Updated from MFT-4.3.0
-
- -- Adrian Chiris <adrianc@unknown>  Mon, 11 Jan 2016 15:31:33 +0200
-
-
-mstflint (4.1.0-1) unstable; urgency=low
-
-  * Updated from MFT-4.1.0
-
- -- Adrian Chiris <adrianc@unknown>  Wed, 26 Aug 2015 15:31:33 +0200
-
-
-mstflint (4.0.1-1) unstable; urgency=low
-
-  * Updated from MFT-4.0.1
-
- -- Adrian Chiris <adrianc@unknown>  Wed, 03 Jun 2015 13:38:33 +0200
-
-
-mstflint (4.0.0-1) unstable; urgency=low
-
-  * Updated from MFT-4.0.0
-
- -- Adrian Chiris <adrianc@unknown>  Sun, 19 Apr 2015 16:17:33 +0200
- 
- 
-mstflint (4.0.0) unstable; urgency=low
-
-  * Updated from MFT-4.0.0 initial release
-
- -- Adrian Chiris <adrianc@unknown>  Thu, 5 Feb 2015 10:20:33 +0200
- 
- 
-mstflint (3.8.0) unstable; urgency=low
-
-  * Updated from MFT-3.8.0
-
- -- Adrian Chiris <adrianc@unknown>  Mon, 17 Nov 2014 09:00:33 +0200
-
-
-mstflint (3.7.1) unstable; urgency=low
-
-  * Updated from MFT-3.7.1
-
- -- Adrian Chiris <adrianc@unknown>  Mon, 12 Oct 2014 09:00:33 +0200
-
-
-mstflint (3.7.0) unstable; urgency=low
-
-  * Updated from MFT-3.7.0
-
- -- Adrian Chiris <adrianc@unknown>  Mon, 28 Jul 2014 09:00:33 +0200
-
-
-mstflint (3.7.0) unstable; urgency=low
-
-  * Updated from MFT-3.7.0 initial relese
-
- -- Adrian Chiris <adrianc@unknown>  Sun, 3 Jun 2014 14:08:33 +0200
-
-
-mstflint (3.6.0) unstable; urgency=low
-
-  * Updated from MFT-3.6.0
-
- -- Adrian Chiris <adrianc@unknown>  Thu, 3 Apr 2014 19:09:33 +0200
-
-
-mstflint (3.5.0) unstable; urgency=low
-
-  * Updated from MFT-3.5.0
-
- -- Omer Dagan <omerd@unknown>  Tue, 25 Dec 2013 16:49:33 +0200
-
-
-mstflint (3.0) unstable; urgency=low
-
-  * Initial Debian release
-
- -- Omer Dagan <omerd@unknown>  Sun, 24 Jan 2013 16:49:33 +0200
+ -- Benoit Mortier <benoit.mortier@opensides.be>  mon, 30 mar 2010 00:19:00 +0100
