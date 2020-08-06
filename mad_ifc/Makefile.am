@@ -35,7 +35,7 @@ USER_DIR = ..
 MTCR_DIR = $(USER_DIR)/${MTCR_CONF_DIR}
 MTCR_INC_DIR = $(top_srcdir)/include/mtcr_ul
 
-INCLUDES = -I. -I.. -I$(MTCR_INC_DIR) -I../${MTCR_CONF_DIR} -I$(USER_DIR)/tools_ayouts/ 
+AM_CPPFLAGS = -I. -I.. -I$(MTCR_INC_DIR) -I../${MTCR_CONF_DIR} -I$(USER_DIR)/tools_ayouts/ 
 
 AM_CFLAGS = -W -Wall -g -MP -MD $(COMPILER_FPIC)
 
@@ -43,6 +43,6 @@ AM_CFLAGS = -W -Wall -g -MP -MD $(COMPILER_FPIC)
 noinst_LIBRARIES = libmad_ifc.a
 
 libmad_ifc_a_SOURCES = mad_ifc.c mad_ifc.h
-libmad_ifc_a_DEPENDENCIES = $(USER_DIR)/tools_layouts/libtools_layouts.a
+libmad_ifc_a_DEPENDENCIES = $(USER_DIR)/tools_layouts/libtools_layouts.la
 libmad_ifc_a_LIBADD = $(libmad_ifc_a_DEPENDENCIES)
 

@@ -42,7 +42,7 @@ UTILS_DIR = $(USER_DIR)/mft_utils
 MAD_IFC_DIR = $(USER_DIR)/mad_ifc
 TOOLS_RES_MGMT_DIR = $(USER_DIR)/tools_res_mgmt
 
-INCLUDES = -I. -I$(USER_DIR) -I$(MTCR_INC_DIR) -I$(MTCR_DIR) -I$(REG_ACCESS_DIR) -I$(CMDIF_DIR) \
+AM_CPPFLAGS = -I. -I$(USER_DIR) -I$(MTCR_INC_DIR) -I$(MTCR_DIR) -I$(REG_ACCESS_DIR) -I$(CMDIF_DIR) \
            -I$(COMMON_DIR) -I $(LAYOUTS_DIR) -I $(UTILS_DIR) -I$(TOOLS_RES_MGMT_DIR) 
 
 FWCOMPS_VERSION = 1
@@ -56,7 +56,7 @@ noinst_LIBRARIES = libfw_comps_mgr.a
 libfw_comps_mgr_a_SOURCES =  fw_comps_mgr.cpp fw_comps_mgr.h fw_comps_mgr_dma_access.cpp fw_comps_mgr_dma_access.h fw_comps_mgr_direct_access.cpp fw_comps_mgr_direct_access.h fw_comps_mgr_abstract_access.cpp fw_comps_mgr_abstract_access.h
                   
 
-libfw_comps_mgr_a_LIBADD = ../reg_access/libreg_access.a $(MTCR_DIR)/libmtcr_ul.a $(LAYOUTS_LIB) $(TOOLS_RES_MGMT_DIR)/libtools_res_mgmt.a
+libfw_comps_mgr_a_LIBADD = ../reg_access/libreg_access.la $(MTCR_DIR)/libmtcr_ul.a $(LAYOUTS_LIB) $(TOOLS_RES_MGMT_DIR)/libtools_res_mgmt.a
 
 if ENABLE_INBAND
 libfw_comps_mgr_a_LIBADD +=  $(top_srcdir)/mad_ifc/libmad_ifc.a

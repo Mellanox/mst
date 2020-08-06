@@ -32,7 +32,7 @@
 
 # Makefile.am -- Process this file with automake to produce Makefile.in
 USER_DIR = ..
-INCLUDES = -I$(USER_DIR) -I$(USER_DIR)/common
+AM_CPPFLAGS = -I$(USER_DIR) -I$(USER_DIR)/common
 AM_CXXFLAGS = -Wall -W -g -MP -MD -pipe $(COMPILER_FPIC)
 AM_CXXFLAGS += -DTOOLS_CRYPTO_KEY='$(TOOLS_CRYPTO_KEY)' -DTOOLS_CRYPTO_IV='$(TOOLS_CRYPTO_IV)'
 

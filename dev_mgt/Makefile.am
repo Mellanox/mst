@@ -35,9 +35,9 @@ USER_DIR = ..
 AM_CPPFLAGS = -I$(srcdir) -I$(top_srcdir) -I$(top_srcdir)/common  -I$(top_srcdir)/include/mtcr_ul
 
 AM_CFLAGS = -W -Wall -g -MP -MD -Wswitch-enum $(COMPILER_FPIC) -DMTCR_EXPORT
-lib_LTLIBRARIES = libdev_mgt.a
+lib_LTLIBRARIES = libdev_mgt.la
 
-libdev_mgt_a_SOURCES = \
+libdev_mgt_la_SOURCES = \
 						tools_dev_types.c \
 						tools_dev_types.h \
 						$(top_srcdir)/common/bit_slice.h       \
@@ -49,10 +49,10 @@ dev_mgt_pylibdir = $(libdir)/mstflint/python_tools/
 dev_mgt_pylib_DATA = c_dev_mgt.so dev_mgt.py
 dist_dev_mgt_pylib_DATA = dev_mgt.py
 
-c_dev_mgt.so: libdev_mgt.a
+c_dev_mgt.so: libdev_mgt.la
 	$(CC) -g -Wall -pthread -shared ${CFLAGS} tools_dev_types.o -o c_dev_mgt.so \
-	-L$(USER_DIR)/reg_access -lreg_access \
-	-L$(USER_DIR)/tools_layouts -ltools_layouts \
+	-L$(USER_DIR)/reg_access/.libs -lreg_access \
+	-L$(USER_DIR)/tools_layouts/.libs -ltools_layouts \
 	-L$(USER_DIR)/${MTCR_CONF_DIR} -lmtcr_ul
 
 CLEANFILES = c_dev_mgt.so

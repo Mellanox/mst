@@ -267,7 +267,7 @@ AS_IF([test "x$INIPARSER_SYSTEM_AVAILABLE" = "xyes" ], [
     CXXFLAGS="$CXXFLAGS -DHAVE_INI_PARSER"
 ])
 
-AC_SEARCH_LIBS([json_object_get], [json-c jason], [JSON_SYSTEM_AVAILABLE="yes"],[
+PKG_CHECK_MODULES([JSON], [jsoncpp], [JSON_SYSTEM_AVAILABLE="yes"],[
     JSON_SYSTEM_AVAILABLE="no"
     JSON_CFLAGS='-I$(top_srcdir)/ext_libs/json'
     AC_SUBST(JSON_CFLAGS)

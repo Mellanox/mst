@@ -32,13 +32,13 @@
 
 # Makefile.am -- Process this file with automake to produce Makefile.in
 USER_DIR = $(top_srcdir)
-INCLUDES = -I. -I$(USER_DIR)/common
+AM_CPPFLAGS = -I. -I$(USER_DIR)/common
 
 AM_CXXFLAGS = -Wall -W -g -MP -MD -pipe -Werror $(COMPILER_FPIC) -DPLDMLIB_EXPORT
 
-noinst_LTLIBRARIES = libpldm.a
+noinst_LTLIBRARIES = libpldm.la
 
-libpldm_a_SOURCES = \
+libpldm_la_SOURCES = \
     pldm_buff.cpp pldm_buff.h\
     pldm_record_descriptor.cpp pldm_record_descriptor.h\
     pldm_dev_id_record.cpp pldm_dev_id_record.h\

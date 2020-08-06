@@ -51,13 +51,13 @@ mstmread_SOURCES = mread.c
 mstmwrite_SOURCES = mwrite.c
 
 mstvpd_SOURCES = vpd.c
-mstvpd_LDADD = $(top_srcdir)/mvpd/libmvpd.a $(top_srcdir)/${MTCR_CONF_DIR}/libmtcr_ul.a ${LDL}
+mstvpd_LDADD = $(top_srcdir)/mvpd/libmvpd.la $(top_srcdir)/${MTCR_CONF_DIR}/libmtcr_ul.a ${LDL}
 
 mstcongestion_SOURCES = congestion.cpp
-mstcongestion_LDADD = $(top_srcdir)/cmdif/libcmdif.a \
-					  $(top_srcdir)/dev_mgt/libdev_mgt.a \
-                      $(top_srcdir)/reg_access/libreg_access.a \
-                      $(top_srcdir)/tools_layouts/libtools_layouts.a \
+mstcongestion_LDADD = $(top_srcdir)/cmdif/libcmdif.la \
+                      $(top_srcdir)/dev_mgt/libdev_mgt.la \
+                      $(top_srcdir)/reg_access/libreg_access.la \
+                      $(top_srcdir)/tools_layouts/libtools_layouts.la \
                       $(top_srcdir)/cmdparser/libcmdparser.a \
                       $(top_srcdir)/${MTCR_CONF_DIR}/libmtcr_ul.a ${LDL}
 

@@ -51,14 +51,14 @@ mstflint_SOURCES = flint.cpp flint.h subcommands.cpp subcommands.h\
 
 mstflint_LDADD =  ../mlxfwops/lib/libmlxfwops.a  \
                   ../cmdparser/libcmdparser.a    \
-		  ../mflash/libmflash.a          \
+                  ../mflash/libmflash.la         \
 		  ../tools_res_mgmt/libtools_res_mgmt.a \
-		  $(CMDIF_DIR)/libcmdif.a        \
-		  ../reg_access/libreg_access.a  \
-		  ../dev_mgt/libdev_mgt.a        \
+                  $(CMDIF_DIR)/libcmdif.la        \
+                  ../reg_access/libreg_access.la  \
+                  ../dev_mgt/libdev_mgt.la        \
 		  ../${MTCR_CONF_DIR}/libmtcr_ul.a        \
-          ../tools_layouts/libtools_layouts.a \
-          ../fw_comps_mgr/libfw_comps_mgr.a \
+                  ../tools_layouts/libtools_layouts.la \
+                  ../fw_comps_mgr/libfw_comps_mgr.a \
 		  ../mft_utils/libmftutils.a\
 		  ${LDL}
 
@@ -85,7 +85,7 @@ else
 endif
 
 if ENABLE_FWMGR
-mstflint_LDADD += $(top_srcdir)/libmfa/libmfa.a $(top_srcdir)/ext_libs/minixz/libminixz.a $(top_srcdir)/mlxarchive/libmstarchive.a $(top_srcdir)/xz_utils/libxz_utils.a -llzma -lm
+mstflint_LDADD += $(top_srcdir)/libmfa/libmfa.la $(top_srcdir)/ext_libs/minixz/libminixz.a $(top_srcdir)/mlxarchive/libmstarchive.la $(top_srcdir)/xz_utils/libxz_utils.la -llzma -lm
 else
 mstflint_CXXFLAGS += -DNO_MSTARCHIVE
 endif

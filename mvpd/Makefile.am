@@ -39,12 +39,12 @@ USER_DIR = $(top_srcdir)
 AM_CPPFLAGS = -I. -I$(USER_DIR) -I$(srcdir) -I$(LAYOUTS_DIR) -I$(USER_DIR)/include/mtcr_ul
 AM_CFLAGS = -W -Wall -g -MP -MD $(COMPILER_FPIC)
 
-noinst_LTLIBRARIES = libmvpd.a
+noinst_LTLIBRARIES = libmvpd.la
 
-libmvpd_a_SOURCES =  mvpd.c mvpd.h
+libmvpd_la_SOURCES = mvpd.c mvpd.h
 
-libmvpd_a_DEPENDENCIES = $(MTCR_DIR)/libmtcr_ul.a
-libmvpd_a_LIBADD = $(libmvpd_a_DEPENDENCIES)
+libmvpd_la_DEPENDENCIES = $(MTCR_DIR)/libmtcr_ul.a
+libmvpd_la_LIBADD = $(libmvpd_la_DEPENDENCIES)
 
 RMVPD_SO = rmvpd.so
 
@@ -54,7 +54,7 @@ LDADD= ../${MTCR_CONF_DIR}/libmtcr_ul.a ${LDL}
 
 noinst_HEADERS = mvpd.h
 
-${RMVPD_SO}: libmvpd.a
+${RMVPD_SO}: libmvpd.la
 	$(CC) -g -Wall -pthread -shared ${CFLAGS} *.o -o ${RMVPD_SO} \
 	 -L$(MTCR_DIR) -lmtcr_ul
 	

@@ -37,7 +37,7 @@ COMMON_DIR = $(top_srcdir)/common
 LAYOUTS_DIR = $(top_srcdir)/tools_layouts
 UTILS_DIR = $(top_srcdir)/mft_utils
 DEV_MGT_DIR = $(top_srcdir)/dev_mgt
-LAYOUTS_LIB = $(LAYOUTS_DIR)/libtools_layouts.a
+LAYOUTS_LIB = $(LAYOUTS_DIR)/libtools_layouts.la
 UTILS_LIB = $(USER_DIR)/mft_utils/libmftutils.a
 CMDIF_DIR = $(USER_DIR)/cmdif
 MLXSIGN_DIR = $(USER_DIR)/mlxsign_lib
@@ -63,39 +63,39 @@ ${MLXPRIVHOST_PYTHON_WRAPPER}: $(PYTHON_WRAPPER_SCRIPT)
 mlxprivhostlibdir=$(libdir)/mstflint/python_tools/$(MLXPRIVHOST_PYTHON_WRAPPER)
 mlxprivhostlib_SCRIPTS = $(MLXPRIVHOST_PYTHON_WRAPPER).py
 
-noinst_LTLIBRARIES = libmlxcfg.a
+noinst_LTLIBRARIES = libmlxcfg.la
 
-libmlxcfg_a_SOURCES =  mlxcfg_status.h mlxcfg_utils.h mlxcfg_utils.cpp mlxcfg_view.h\
+libmlxcfg_la_SOURCES = mlxcfg_status.h mlxcfg_utils.h mlxcfg_utils.cpp mlxcfg_view.h\
         mlxcfg_expression.h mlxcfg_expression.cpp\
 mlxcfg_db_items.h mlxcfg_db_items.cpp\
         mlxcfg_db_manager.h mlxcfg_db_manager.cpp mlxcfg_param.h mlxcfg_param.cpp mlxcfg_tlv.h mlxcfg_tlv.cpp\
         mlxcfg_commander.h mlxcfg_commander.cpp mlxcfg_generic_commander.h mlxcfg_generic_commander.cpp\
         mlxcfg_param_lib.h mlxcfg_param_lib.cpp mlxcfg_4thgen_commander.h mlxcfg_4thgen_commander.cpp
 
-libmlxcfg_a_LIBADD = $(UTILS_LIB) $(MUPARSER_LIBS) $(SQLITE_LIBS)\
-				$(CMDIF_DIR)/libcmdif.a ../reg_access/libreg_access.a $(LAYOUTS_LIB) $(MTCR_DIR)/libmtcr_ul.a\
-				$(DEV_MGT_DIR)/libdev_mgt.a $(COMPS_MGR_DIR)/libfw_comps_mgr.a $(TOOLS_RES_MGMT_DIR)/libtools_res_mgmt.a $(MLNXOS_PPC_LIBS) $(LIBSTD_CPP) ${LDL}
+libmlxcfg_la_LIBADD = $(UTILS_LIB) $(MUPARSER_LIBS) $(SQLITE_LIBS)\
+        $(CMDIF_DIR)/libcmdif.la ../reg_access/libreg_access.la $(LAYOUTS_LIB) $(MTCR_DIR)/libmtcr_ul.a\
+        $(DEV_MGT_DIR)/libdev_mgt.la $(COMPS_MGR_DIR)/libfw_comps_mgr.a $(TOOLS_RES_MGMT_DIR)/libtools_res_mgmt.a $(MLNXOS_PPC_LIBS) $(LIBSTD_CPP) ${LDL}
 
-mstconfig_LDADD = libmlxcfg.a $(UTILS_LIB) $(MUPARSER_LIBS) $(SQLITE_LIBS)\
-				$(CMDIF_DIR)/libcmdif.a ../reg_access/libreg_access.a $(LAYOUTS_LIB) $(MTCR_DIR)/libmtcr_ul.a\
-				$(DEV_MGT_DIR)/libdev_mgt.a $(COMPS_MGR_DIR)/libfw_comps_mgr.a $(TOOLS_RES_MGMT_DIR)/libtools_res_mgmt.a $(MLNXOS_PPC_LIBS) $(LIBSTD_CPP) ${LDL}
+mstconfig_LDADD = libmlxcfg.la $(UTILS_LIB) $(MUPARSER_LIBS) $(SQLITE_LIBS)\
+        $(CMDIF_DIR)/libcmdif.la ../reg_access/libreg_access.la $(LAYOUTS_LIB) $(MTCR_DIR)/libmtcr_ul.a\
+        $(DEV_MGT_DIR)/libdev_mgt.la $(COMPS_MGR_DIR)/libfw_comps_mgr.a $(TOOLS_RES_MGMT_DIR)/libtools_res_mgmt.a $(MLNXOS_PPC_LIBS) $(LIBSTD_CPP) ${LDL}
 
 if DISABLE_XML2
 AM_CXXFLAGS += -DDISABLE_XML2
 else
 mstconfig_LDADD += -lxml2
-libmlxcfg_a_LIBADD += -lxml2
+libmlxcfg_la_LIBADD += -lxml2
 endif
 
 if ENABLE_INBAND
 mstconfig_LDADD += $(top_srcdir)/mad_ifc/libmad_ifc.a
-libmlxcfg_a_LIBADD += $(top_srcdir)/mad_ifc/libmad_ifc.a
+libmlxcfg_la_LIBADD += $(top_srcdir)/mad_ifc/libmad_ifc.a
 else
 endif
 
 if ENABLE_OPENSSL
 mstconfig_LDADD +=   $(MLXSIGN_LIB) -lcrypto
-libmlxcfg_a_LIBADD +=   $(MLXSIGN_LIB) -lcrypto
+libmlxcfg_la_LIBADD += $(MLXSIGN_LIB) -lcrypto
 else
 AM_CXXFLAGS += -DNO_OPEN_SSL
 endif
