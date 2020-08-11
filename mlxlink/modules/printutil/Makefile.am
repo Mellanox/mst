@@ -39,9 +39,6 @@ MTCR_DIR = $(top_srcdir)/${MTCR_CONF_DIR}
 MTCR_INC_DIR = $(top_srcdir)/include/mtcr_ul
 UTILS_DIR = $(top_srcdir)/mft_utils
 MLXREG_DIR = $(top_srcdir)/mlxreg
-JSON_DIR = $(top_srcdir)/ext_libs/json
-
-INCLUDES = -I. -I$(USER_DIR) -I$(MTCR_DIR) -I$(MFT_EXT_LIBS_INC_DIR) -I$(UTILS_DIR) -I$(MLXREG_DIR) -I$(MTCR_INC_DIR) -I$(JSON_DIR)
 
 AM_CFLAGS = -Wall -W -g -MP -MD -pipe -Werror $(COMPILER_FPIC) -DDATA_PATH=\"$(pkgdatadir)\"
 
@@ -51,5 +48,6 @@ libprint_util_lib_a_SOURCES = mlxlink_cmd_print.h \
                             mlxlink_cmd_print.cpp \
                             mlxlink_record.h \
                             mlxlink_record.cpp
-libprint_util_lib_a_LIBDADD = $(JSON_DIR)/libjson.a
+libprint_util_lib_a_CXXFLAGS = -I. -I$(USER_DIR) -I$(MTCR_DIR) -I$(MFT_EXT_LIBS_INC_DIR) -I$(UTILS_DIR) -I$(MLXREG_DIR) -I$(MTCR_INC_DIR) $(JSON_CFLAGS)
+libprint_util_lib_a_LIBADD = $(JSON_LIBS)
 libprint_util_lib_a_CFLAGS = $(AM_CFLAGS)

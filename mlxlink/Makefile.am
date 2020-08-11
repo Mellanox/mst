@@ -44,15 +44,12 @@ UTILS_DIR = $(top_srcdir)/mft_utils
 MLXREG_DIR = $(top_srcdir)/mlxreg
 LAYOUTS_DIR = $(top_srcdir)/tools_layouts
 MLXLINK_MODULES_DIR = $(top_srcdir)/mlxlink
-JSON_DIR = $(top_srcdir)/ext_libs/json
-
-INCLUDES = -I. -I$(top_srcdir) -I$(MTCR_DIR) -I$(MFT_EXT_LIBS_INC_DIR) -I$(UTILS_DIR) -I$(MLXREG_DIR) -I$(MLXLINK_MODULES_DIR) -I$(MTCR_INC_DIR) -I$(JSON_DIR)
 
 AM_CXXFLAGS = -Wall -W -DMST_UL -g -MP -MD -pipe -Werror
 
 bin_PROGRAMS = mstlink
 
-mstlink_CXXFLAGS = -DEXTERNAL
+mstlink_CXXFLAGS = -I. -I$(top_srcdir) -I$(MTCR_DIR) -I$(MFT_EXT_LIBS_INC_DIR) -I$(UTILS_DIR) -I$(MLXREG_DIR) -I$(MLXLINK_MODULES_DIR) -I$(MTCR_INC_DIR) $(JSON_CFLAGS) -DEXTERNAL
 mstlink_SOURCES = mlxlink_main.cpp
 
 mstlink_DEPENDENCIES = modules/libmodules_lib.a \
@@ -70,7 +67,7 @@ mstlink_DEPENDENCIES = modules/libmodules_lib.a \
                       $(USER_DIR)/ext_libs/minixz/libminixz.a \
                       -lboost_regex -lboost_filesystem -lboost_system \
                       -llzma $(LIBSTD_CPP) ${LDL} -lexpat \
-                      $(JSON_DIR)/libjson.a
+                      $(JSON_LIBS)
 
 mstlink_LDADD = $(mstlink_DEPENDENCIES)
 

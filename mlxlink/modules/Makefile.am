@@ -41,9 +41,6 @@ MTCR_INC_DIR = $(top_srcdir)/include/mtcr_ul
 UTILS_DIR = $(top_srcdir)/mft_utils
 MLXREG_DIR = $(top_srcdir)/mlxreg
 MLXLINK_MODULES_DIR = $(top_srcdir)/mlxlink
-JSON_DIR = $(top_srcdir)/ext_libs/json
-
-INCLUDES = -I. -I$(USER_DIR) -I$(MTCR_DIR) -I$(MFT_EXT_LIBS_INC_DIR) -I$(UTILS_DIR) -I$(MLXREG_DIR) -I$(MLXLINK_MODULES_DIR) -I$(MTCR_INC_DIR) -I$(JSON_DIR)
 
 AM_CFLAGS = -Wall -W -g -MP -MD -pipe -Werror $(COMPILER_FPIC) -DDATA_PATH=\"$(pkgdatadir)\"
 AM_CXXFLAGS = -Wall -W -g -MP -MD -pipe -Werror #$(COMPILER_FPIC)
@@ -65,5 +62,6 @@ libmodules_lib_a_SOURCES = mlxlink_commander.h \
                             mlxlink_reg_parser.cpp \
                             mlxlink_reg_parser.h
 
-libmodules_lib_a_LIBADD = printutil/libprint_util_lib.a  $(JSON_DIR)/libjson.a
+libmodules_lib_a_LIBADD = printutil/libprint_util_lib.a $(JSON_LIBS)
 libmodules_lib_a_CFLAGS = $(AM_CFLAGS)
+libmodules_lib_a_CXXFLAGS = -I. -I$(USER_DIR) -I$(MTCR_DIR) -I$(MFT_EXT_LIBS_INC_DIR) -I$(UTILS_DIR) -I$(MLXREG_DIR) -I$(MLXLINK_MODULES_DIR) -I$(MTCR_INC_DIR) $(JSON_CFLAGS)

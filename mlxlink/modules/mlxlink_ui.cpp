@@ -379,7 +379,7 @@ void MlxlinkUi::paramValidate()
 
 void MlxlinkUi::initCmdParser()
 {
-    for (u_int32_t it = SHOW_PDDR; it < FUNCTION_LAST; it++) {
+    for (u_int32_t it = SHOW_PDDR; it <= FUNCTION_LAST; it++) {
         _sendRegFuncMap.push_back(0);
     }
     AddOptions(DEVICE_FLAG, DEVICE_FLAG_SHORT, "MstDevice",
